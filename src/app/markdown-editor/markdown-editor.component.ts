@@ -1,22 +1,30 @@
-import { Component, Input, Output, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, OnInit, ViewEncapsulation, ElementRef, AfterViewInit } from '@angular/core';
+
+const SimpleMDE: any = require('simplemde');
 
 @Component({
   selector: 'custom-markdown-editor',
   template: `
-    <p>
-      markdown-editor works!
-    </p>
+    <textarea #markdown matInput></textarea>
   `,
-  styles: [],
+  styles: [
+    '@import url("../../../node_modules/simplemde/dist/simplemde.min.css");',
+  ],
   encapsulation: ViewEncapsulation.Native
 })
-export class MarkdownEditorComponent implements OnInit {
+export class MarkdownEditorComponent implements AfterViewInit {
 
-  @Input() text: string;
-  constructor() { }
+  @ViewChild('markdown') markdownTextEditor: ElementRef;
+
+  constructor() {}
+
+  ngAfterViewInit() {
+    console.log('After View Init');
+    console.log(this.markdownTextEditor);
+    new SimpleMDE({ element: this.markdownTextEditor.nativeElement, showIcons: false, status: false  });
+  }
 
   ngOnInit() {
-    console.log(this.text);
     console.log('Initializing Markdown Compoennt');
   }
 
