@@ -24,7 +24,7 @@ const SimpleMDE: any = require('simplemde');
 export class MarkdownEditorComponent implements AfterViewInit {
 
   @Input() model: string;
-  @Output() modelChange = new EventEmitter<string>();
+  @Output() onTextChanged = new EventEmitter<string>();
   @ViewChild('markdown') markdownTextEditor: ElementRef;
 
   constructor() {}
@@ -38,6 +38,9 @@ export class MarkdownEditorComponent implements AfterViewInit {
       forceSync: true,
       toolbar: false,
     });
+
+    mde.codemirror.options.extraKeys['Tab'] = false;
+    mde.codemirror.options.extraKeys['Shift-Tab'] = false;
 
     mde.codemirror.on('focus', () => {
       const editorElement = (this.markdownTextEditor.nativeElement as HTMLElement);
@@ -55,7 +58,7 @@ export class MarkdownEditorComponent implements AfterViewInit {
 
     mde.codemirror.on('change', () => {
       const value = mde.codemirror.getValue();
-      this.modelChange.emit(value);
+      this.onTextChanged.emit(value);
     });
 
     if (this.model) {
