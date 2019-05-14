@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { MatInputModule } from '@angular/material';
@@ -11,7 +11,7 @@ import { MarkdownEditorComponent } from './markdown-editor/markdown-editor.compo
 
 @NgModule({
   declarations: [MarkdownEditorComponent],
-  imports: [ BrowserModule, MatInputModule, FormsModule, BrowserAnimationsModule ],
+  imports: [BrowserModule, FormsModule, MatInputModule, BrowserAnimationsModule],
   entryComponents: [MarkdownEditorComponent]
 })
 export class AppModule {

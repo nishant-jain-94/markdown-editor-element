@@ -6,27 +6,20 @@ import { ViewEncapsulation, ElementRef } from '@angular/core';
 const SimpleMDE: any = require('simplemde');
 
 @Component({
-  selector: 'custom-markdown-editor',
+  selector: 'quizetency-markdown-editor',
   template: `
-  <mat-form-field>
-    <textarea #markdown matInput placeholder="Enter Text"></textarea>
-  </mat-form-field>
+  <form>
+    <mat-form-field>
+      <textarea #markdown matInput name="text" placeholder="Question" cdkTextareaAutosize cdkAutosizeMinRows="2"></textarea>
+    </mat-form-field>
+  </form>
   `,
-  styles: [
-    '@import url("../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css");',
-    '@import url("../../../node_modules/simplemde/dist/simplemde.min.css");',
-    `.CodeMirror, .CodeMirror-scroll {
-      min-height: 0px !important;
-      padding-left: 0px;
-    }',
-
-    .CodeMirror {
-      height: 100% !important;
-      border: none;
-      padding: 0px;
-    }`,
+  styleUrls: [
+    "../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+    "../../../node_modules/simplemde/dist/simplemde.min.css",
+    "./markdown-editor.component.css",
   ],
-  encapsulation: ViewEncapsulation.Native
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class MarkdownEditorComponent implements AfterViewInit {
 
@@ -38,9 +31,11 @@ export class MarkdownEditorComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     const mde = new SimpleMDE({
+      autofocus: false,
       element: this.markdownTextEditor.nativeElement,
       showIcons: false,
       status: false,
+      forceSync: true,
       toolbar: false,
     });
 
@@ -48,12 +43,14 @@ export class MarkdownEditorComponent implements AfterViewInit {
       const editorElement = (this.markdownTextEditor.nativeElement as HTMLElement);
       const matFormFieldElement = editorElement.closest('mat-form-field');
       matFormFieldElement.classList.add('mat-focused');
+      matFormFieldElement.classList.add('mat-form-field-should-float');
     });
 
     mde.codemirror.on('blur', () => {
       const editorElement = (this.markdownTextEditor.nativeElement as HTMLElement);
       const matFormFieldElement = editorElement.closest('mat-form-field');
       matFormFieldElement.classList.remove('mat-focused');
+      matFormFieldElement.classList.remove('mat-form-field-should-float');
     });
 
     mde.codemirror.on('change', () => {
@@ -66,8 +63,5 @@ export class MarkdownEditorComponent implements AfterViewInit {
     }
   }
 
-  ngOnInit() {
-    console.log('Initializing Markdown Compoennt');
-  }
-
+  ngOnInit() {}
 }
