@@ -8,9 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "package": "cat dist/markdown-editor-element/runtime.js dist/markdown-editor-element/polyfills.js dist/markdown-editor-element/scripts.js dist/markdown-editor-element/main.js | gzip > dist/markdown-editor-element/markdown-editor.bundle.js.gz",
+    "package": "cat dist/markdown-editor-element/runtime.js dist/markdown-editor-element/polyfills.js dist/markdown-editor-element/scripts.js dist/markdown-editor-element/main.js > dist/markdown-editor-element/markdown-editor.bundle.js",
     "serve": "http-server --gzip"
   },
+  "main": "dist/markdown-editor-element/markdown-editor.bundle.js",
   "private": true,
   "dependencies": {
     "@angular/animations": "^7.2.15",
