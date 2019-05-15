@@ -4,6 +4,6 @@ notifications:
 node_js:
   - stable
 install:
-  - yarn run install
+  - yarn install
 script:
   - yarn run test --no-watch --no-progress --browsers=ChromeHeadlessCI
