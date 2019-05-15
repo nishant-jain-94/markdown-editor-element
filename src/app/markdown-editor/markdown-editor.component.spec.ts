@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MarkdownEditorComponent } from './markdown-editor.component';
 
@@ -8,6 +10,7 @@ describe('MarkdownEditorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ MatInputModule, BrowserAnimationsModule ],
       declarations: [ MarkdownEditorComponent ]
     })
     .compileComponents();

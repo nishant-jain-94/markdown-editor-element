@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "package": "cat dist/markdown-editor-element/runtime.js dist/markdown-editor-element/polyfills.js dist/markdown-editor-element/scripts.js dist/markdown-editor-element/main.js | gzip > elements.js.gz",
+    "package": "cat dist/markdown-editor-element/runtime.js dist/markdown-editor-element/polyfills.js dist/markdown-editor-element/scripts.js dist/markdown-editor-element/main.js | gzip > dist/markdown-editor-element/markdown-editor.bundle.js.gz",
     "serve": "http-server --gzip"
   },
   "private": true,
@@ -24,6 +24,7 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@types/jest": "^24.0.13",
     "core-js": "^2.5.4",
     "document-register-element": "^1.13.2",
     "hammerjs": "^2.0.8",

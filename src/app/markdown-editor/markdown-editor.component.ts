@@ -23,7 +23,7 @@ const SimpleMDE: any = require('simplemde');
 })
 export class MarkdownEditorComponent implements AfterViewInit {
 
-  @Input() model: string;
+  @Input() text: string;
   @Output() onTextChanged = new EventEmitter<string>();
   @ViewChild('markdown') markdownTextEditor: ElementRef;
 
@@ -61,8 +61,9 @@ export class MarkdownEditorComponent implements AfterViewInit {
       this.onTextChanged.emit(value);
     });
 
-    if (this.model) {
-      mde.codemirror.setValue(this.model);
+    if (this.text) {
+      console.log(this.text);
+      mde.codemirror.setValue(this.text);
     }
   }
 

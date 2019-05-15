@@ -4,11 +4,17 @@
   <meta charset="utf-8">
   <title>MarkdownEditorElement</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="elements.js"></script>
+  <script src="dist/markdown-editor-element/markdown-editor.bundle.js"></script>
   <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
   <h1>Markdown Editor</h1>
   <custom-markdown-editor text="This is the text"></custom-markdown-editor>
+  <script>
+    const customMarkdownEditor = document.querySelector('custom-markdown-editor');
+    customMarkdownEditor.addEventListener('onTextChanged', (event) => {
+      console.log(event.detail);
+    });
+  </script>
 </body>
 </html>
